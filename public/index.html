@@ -14,53 +14,75 @@
     >
       <div class="flex items-center justify-between">
         <h1 class="text-2xl font-bold">Donnée de vente</h1>
-        <p
-          class="p-2 border w-fit border-gray-300 rounded-md"
-        >
-          sondage 1/2
-        </p>
+        <p class="p-2 border w-fit border-gray-300 rounded-md">sondage 1/2</p>
       </div>
-      <form action="" class="flex flex-col gap-4">
+      <form id="surveyForm" class="flex flex-col gap-4">
         <div class="flex flex-col gap-1">
-          <label for="">produit achete</label>
+          <label for="product">Produit acheté</label>
           <input
+            id="product"
+            name="product"
             type="text"
             placeholder="produit"
             class="border border-gray-300 px-1 py-2"
+            required
           />
         </div>
         <div class="flex flex-col gap-1">
-          <label for="">date de l'achat</label>
-          <input type="date" class="border border-gray-300 px-1 py-2" />
+          <label for="purchaseDate">Date de l'achat</label>
+          <input
+            id="purchaseDate"
+            name="purchaseDate"
+            type="date"
+            class="border border-gray-300 px-1 py-2"
+            required
+          />
         </div>
         <div class="grid grid-cols-2 gap-4">
           <div class="flex flex-col gap-1">
-            <label for="">prix avant</label>
+            <label for="priceBefore">Prix avant</label>
             <input
-              type="text"
+              id="priceBefore"
+              name="priceBefore"
+              type="number"
               placeholder="prix en MAD"
               class="border border-gray-300 px-1 py-2"
+              required
             />
           </div>
           <div class="flex flex-col gap-1">
-            <label for="">prix en promotion</label>
+            <label for="priceAfter">Prix en promotion</label>
             <input
-              type="text"
+              id="priceAfter"
+              name="priceAfter"
+              type="number"
               placeholder="prix en MAD"
               class="border border-gray-300 px-1 py-2"
+              required
             />
           </div>
         </div>
         <div class="flex flex-col gap-1">
-          <label for="">quantite</label>
+          <label for="quantity">Quantité</label>
           <input
-            type="text"
-            placeholder="quantite"
+            id="quantity"
+            name="quantity"
+            type="number"
+            placeholder="quantité"
             class="border border-gray-300 px-1 py-2"
+            required
           />
         </div>
-        <button class="bg-violet-500 text-white px-4 rounded-md mt-4 py-2 w-fit">continuer</button>
+        <button
+          class="bg-violet-500 text-white px-4 rounded-md mt-4 py-2 w-fit"
+          type="submit"
+        >
+          Soumettre
+        </button>
       </form>
+      <p id="responseMessage" class="text-green-500 mt-4"></p>
     </main>
+
+    <script src="./javascript/vente.js"></script>
   </body>
 </html>
