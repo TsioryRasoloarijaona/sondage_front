@@ -18,40 +18,41 @@
       </div>
       <form id="surveyForm" class="flex flex-col gap-4">
         <div class="flex flex-col gap-1">
-          <label for="product">type de promotion</label>
+          <label for="promotionType">Type de promotion</label>
           <select
-            id="product"
-            name="product"
+            id="promotionType"
+            name="promotionType"
             class="border border-gray-300 px-1 py-2"
             required
           >
-            <option value="" disabled selected>choisir une promotion</option>
-            <option value="réduction">réduction</option>
-            <option value="offre grouper">offre grouper</option>
-            <option value="bon d'achat">bon d'achat</option>
-            <option value="gratuité">gratuité</option>
+            <option value="" disabled selected>Choisir une promotion</option>
+            <option value="réduction">Réduction</option>
+            <option value="offre grouper">Offre groupée</option>
+            <option value="bon d'achat">Bon d'achat</option>
+            <option value="gratuité">Gratuité</option>
           </select>
         </div>
         <div class="flex flex-col gap-1">
-          <label for="product">genre</label>
+          <label for="gender">Genre</label>
           <select
-            id="product"
-            name="product"
+            id="gender"
+            name="gender"
             class="border border-gray-300 px-1 py-2"
             required
           >
-            <option value="homme">homme</option>
-            <option value="femme">femme</option>
+            <option value="" disabled selected>Choisir un genre</option>
+            <option value="homme">Homme</option>
+            <option value="femme">Femme</option>
           </select>
         </div>
 
         <div class="flex flex-col gap-1">
-          <label for="quantity">age</label>
+          <label for="age">Âge</label>
           <input
-            id="quantity"
-            name="quantity"
+            id="age"
+            name="age"
             type="number"
-            placeholder="age"
+            placeholder="Âge"
             class="border border-gray-300 px-1 py-2"
             required
           />
@@ -64,5 +65,6 @@
         </button>
       </form>
     </main>
+    <script src="./javascript/prom.js"></script>
   </body>
 </html>
