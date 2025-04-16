@@ -1,4 +1,4 @@
-const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
+const { S3Client, GetObjectCommand , PutObjectCommand} = require("@aws-sdk/client-s3");
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 require("dotenv").config();
 
@@ -17,7 +17,7 @@ const s3Client = new S3Client({
 async function getPresignedUrl() {
   const command = new GetObjectCommand({
     Bucket: bucketName,
-    Key: "sondagepublic/Screenshot from 2024-09-04 11-23-39.png",
+    Key: "sondagepublic/sondage.xlsx",
   });
 
   try {
@@ -28,4 +28,20 @@ async function getPresignedUrl() {
   }
 }
 
-module.exports = { getPresignedUrl };
+async function uploadFile(fileContent, key) {
+  try {
+    const command = new PutObjectCommand({
+      Bucket: bucketName,
+      Key: key,
+      Body: fileContent,
+    });
+
+    const response = await s3Client.send(command);
+    console.log("Fichier uploadé avec succès :", response);
+    return response;
+  } catch (err) {
+    console.error("Erreur lors de l'upload :", err);
+  }
+}
+
+module.exports = { getPresignedUrl, uploadFile };
