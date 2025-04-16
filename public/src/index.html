@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sondage</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body
+    class="flex items-center h-[100vh] w-[100vw] justify-center bg-gray-100"
+  >
+    <main
+      class="w-1/3 border border-gray-300 rounded-md p-6 bg-white shadow-md space-y-4"
+    >
+      <div class="flex items-center justify-between">
+        <h1 class="text-2xl font-bold">Donnée de vente</h1>
+        <p
+          class="p-2 border w-fit border-gray-300 rounded-md"
+        >
+          sondage 1/2
+        </p>
+      </div>
+      <form action="" class="flex flex-col gap-4">
+        <div class="flex flex-col gap-1">
+          <label for="">produit achete</label>
+          <input
+            type="text"
+            placeholder="produit"
+            class="border border-gray-300 px-1 py-2"
+          />
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="">date de l'achat</label>
+          <input type="date" class="border border-gray-300 px-1 py-2" />
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1">
+            <label for="">prix avant</label>
+            <input
+              type="text"
+              placeholder="prix en MAD"
+              class="border border-gray-300 px-1 py-2"
+            />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="">prix en promotion</label>
+            <input
+              type="text"
+              placeholder="prix en MAD"
+              class="border border-gray-300 px-1 py-2"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="">quantite</label>
+          <input
+            type="text"
+            placeholder="quantite"
+            class="border border-gray-300 px-1 py-2"
+          />
+        </div>
+        <button class="bg-violet-500 text-white px-4 rounded-md mt-4 py-2 w-fit">continuer</button>
+      </form>
+    </main>
+  </body>
+</html>
