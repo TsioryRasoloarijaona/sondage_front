@@ -1,144 +1,560 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sondage</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <title>Formulaire de Sondage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body
-    class="flex items-center h-[100vh] w-[100vw] justify-center bg-gray-100"
-  >
-    <main
-      class="w-2/5 border border-gray-300 rounded-md p-6 bg-white shadow-md space-y-4"
-    >
-      <h1 class="text-2xl font-bold">Donnée de vente</h1>
 
-      <form id="surveyForm" class="flex flex-col gap-4 text-sm">
-        <div class="grid grid-cols-2 gap-4">
-          <div class="flex flex-col gap-1">
-            <label for="quantity">Quantité</label>
-            <input
-              id="quantity"
-              name="quantity"
-              type="number"
-              placeholder="quantité"
-              class="border border-gray-300 px-1 py-2"
-              required
-            />
-          </div>
-          <div class="flex flex-col gap-1">
-            <label for="product">Produit acheté</label>
-            <input
-              id="product"
-              name="product"
-              type="text"
-              placeholder="produit"
-              class="border border-gray-300 px-1 py-2"
-              required
-            />
-          </div>
-        </div>
-        <div class="flex flex-col gap-1">
-          <label for="purchaseDate">Date de l'achat</label>
+  <body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+      <h1 class="text-2xl font-bold mb-6">Questions du Sondage</h1>
+      <form action="#" id="sondage" class="space-y-6">
+        <!-- Champ pour l'âge -->
+        <div>
+          <label for="age" class="block font-medium mb-2">Âge :</label>
           <input
-            id="purchaseDate"
-            name="purchaseDate"
-            type="date"
-            class="border border-gray-300 px-1 py-2"
+            type="number"
+            id="age"
+            name="age"
+            class="w-full border-b border-gray-300 px-4 py-2"
+            placeholder="Entrez votre âge"
+            min="1"
+            max="120"
             required
           />
         </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="flex flex-col gap-1">
-            <label for="priceBefore">Prix avant</label>
-            <input
-              id="priceBefore"
-              name="priceBefore"
-              type="number"
-              placeholder="prix en MAD"
-              class="border border-gray-300 px-1 py-2"
-              required
-            />
-          </div>
-          <div class="flex flex-col gap-1">
-            <label for="priceAfter">Prix en promotion</label>
-            <input
-              id="priceAfter"
-              name="priceAfter"
-              type="number"
-              placeholder="prix en MAD"
-              class="border border-gray-300 px-1 py-2"
-              required
-            />
+
+        <!-- Champ pour le revenu mensuel -->
+
+        <div>
+          <label for="age" class="block font-medium mb-2">revenu mensuel</label>
+          <input
+            type="number"
+            id="revenu"
+            name="revenu"
+            class="w-full border-b border-gray-300 px-4 py-2"
+            placeholder="revenu mensuel"
+            min="1"
+            max="120"
+            required
+          />
+        </div>
+        <div>
+          <label class="block font-medium mb-2"
+            >veiller mentionner votre genre</label
+          >
+          <div class="flex flex-col space-y-2">
+            <label
+              ><input
+                type="radio"
+                name="q0"
+                value="H"
+                class="mr-2"
+                required
+              />homme</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q0"
+                value="F"
+                class="mr-2"
+                required
+              />femme</label
+            >
           </div>
         </div>
-        <h1 class="text-2xl font-bold">information promotionnel</h1>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="flex flex-col gap-1">
-            <label for="promotionType">Type de promotion</label>
-            <select
-              id="promotionType"
-              name="promotionType"
-              class="border border-gray-300 px-1 py-2"
-              required
+        <!-- Question 1 -->
+        <div>
+          <label class="block font-medium mb-2"
+            >1. Quel type de promotion vous incite le plus à effectuer un achat
+            non planifié ?</label
+          >
+          <div class="flex flex-col space-y-2">
+            <label
+              ><input
+                type="radio"
+                name="q1"
+                value="reduction_directe"
+                class="mr-2"
+                required
+              />Réduction directe de prix</label
             >
-              <option value="" disabled selected>Choisir une promotion</option>
-              <option value="réduction">Réduction</option>
-              <option value="offre grouper">Offre groupée</option>
-              <option value="bon d'achat">Bon d'achat</option>
-              <option value="gratuité">Gratuité</option>
-            </select>
-          </div>
-          <div class="flex flex-col gap-1">
-            <label for="gender">Genre</label>
-            <select
-              id="gender"
-              name="gender"
-              class="border border-gray-300 px-1 py-2"
-              required
+            <label
+              ><input
+                type="radio"
+                name="q1"
+                value="offre_groupee"
+                class="mr-2"
+                required
+              />Offre groupée (plusieurs produits ensemble)</label
             >
-              <option value="" disabled selected>Choisir un genre</option>
-              <option value="homme">Homme</option>
-              <option value="femme">Femme</option>
-            </select>
-          </div>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="flex flex-col gap-1">
-            <label for="age">Âge</label>
-            <input
-              id="age"
-              name="age"
-              type="number"
-              placeholder="Âge"
-              class="border border-gray-300 px-1 py-2"
-              required
-            />
-          </div>
-          <div class="flex flex-col gap-1">
-            <label for="revenu">revenu</label>
-            <input
-              id="revenu"
-              name="revenu"
-              type="number"
-              placeholder="revenu en MAD"
-              class="border border-gray-300 px-1 py-2"
-              required
-            />
+            <label
+              ><input
+                type="radio"
+                name="q1"
+                value="gratuit"
+                class="mr-2"
+                required
+              />Gratuité (produit offert pour l'achat d'un autre)</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q1"
+                value="bon_achat"
+                class="mr-2"
+                required
+              />Bon d'achat pour un achat futur</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q1"
+                value="cashback"
+                class="mr-2"
+                required
+              />Cashback (remboursement partiel après achat)</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q1"
+                value="bogof"
+                class="mr-2"
+                required
+              />Formule BOGOF (Buy One Get One Free)</label
+            >
           </div>
         </div>
 
-        <button
-          class="bg-violet-500 text-white px-4 rounded-md mt-4 py-2 w-fit"
-          type="submit"
-        >
-          repondre
-        </button>
+        <!-- Question 2 -->
+        <div>
+          <label class="block font-medium mb-2"
+            >2. Lors de l'achat d'un produit électronique, quel pourcentage
+            minimum de réduction vous semble suffisamment attractif pour
+            déclencher votre décision d'achat ?</label
+          >
+          <div class="flex flex-col space-y-2">
+            <label
+              ><input
+                type="radio"
+                name="q2"
+                value="moins_10"
+                class="mr-2"
+                required
+              />Moins de 10%</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q2"
+                value="entre_10_25"
+                class="mr-2"
+                required
+              />Entre 10% et 25%</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q2"
+                value="entre_26_50"
+                class="mr-2"
+                required
+              />Entre 26% et 50%</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q2"
+                value="entre_51_75"
+                class="mr-2"
+                required
+              />Entre 51% et 75%</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q2"
+                value="plus_75"
+                class="mr-2"
+                required
+              />Plus de 75%</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q2"
+                value="montant_absolu"
+                class="mr-2"
+                required
+              />Le pourcentage n'est pas important, c'est le montant absolu
+              économisé qui compte</label
+            >
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div>
+          <label class="block font-medium mb-2"
+            >3. Dans quelle mesure êtes-vous d'accord avec l'affirmation
+            suivante : "J'achète souvent des produits en promotion même si je
+            n'en ai pas immédiatement besoin" ?</label
+          >
+          <div class="flex flex-col space-y-2">
+            <label
+              ><input
+                type="radio"
+                name="q3"
+                value="tout_a_fait_daccord"
+                class="mr-2"
+                required
+              />Tout à fait d'accord</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q3"
+                value="plutot_daccord"
+                class="mr-2"
+                required
+              />Plutôt d'accord</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q3"
+                value="neutre"
+                class="mr-2"
+                required
+              />Ni d'accord ni en désaccord</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q3"
+                value="plutot_pas_daccord"
+                class="mr-2"
+                required
+              />Plutôt pas d'accord</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q3"
+                value="pas_du_tout_daccord"
+                class="mr-2"
+                required
+              />Pas du tout d'accord</label
+            >
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div>
+          <label class="block font-medium mb-2"
+            >4. Quels facteurs, au-delà du prix réduit, influencent votre
+            décision d'acheter un produit en promotion ?</label
+          >
+          <div class="flex flex-col space-y-2">
+            <label
+              ><input
+                type="radio"
+                name="q4"
+                value="marque_produit"
+                class="mr-2"
+                required
+              />La marque du produit</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q4"
+                value="duree_limitee"
+                class="mr-2"
+                required
+              />La durée limitée de la promotion</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q4"
+                value="avis_consommateurs"
+                class="mr-2"
+                required
+              />Les avis d'autres consommateurs</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q4"
+                value="qualite_percue"
+                class="mr-2"
+                required
+              />La qualité perçue du produit</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q4"
+                value="utilite_immediate"
+                class="mr-2"
+                required
+              />L'utilité immédiate du produit dans votre quotidien</label
+            >
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div>
+          <label class="block font-medium mb-2"
+            >5. Après avoir profité d'une promotion intéressante sur un produit,
+            quelle est votre attitude la plus probable ?</label
+          >
+          <div class="flex flex-col space-y-2">
+            <label
+              ><input
+                type="radio"
+                name="q5"
+                value="fidele_marque"
+                class="mr-2"
+                required
+              />Je reste fidèle à la marque et j'attends les prochaines
+              promotions</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q5"
+                value="recherche_promotions"
+                class="mr-2"
+                required
+              />Je recherche activement d'autres promotions, quelle que soit la
+              marque</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q5"
+                value="rachat_prix_normal"
+                class="mr-2"
+                required
+              />Je suis prêt(e) à racheter le même produit au prix normal si
+              j'en suis satisfait(e)</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q5"
+                value="partage_experience"
+                class="mr-2"
+                required
+              />Je partage mon expérience positive avec mon entourage</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q5"
+                value="pas_importance_marque"
+                class="mr-2"
+                required
+              />Je n'accorde pas d'importance particulière à la marque après
+              l'achat</label
+            >
+          </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div>
+          <label class="block font-medium mb-2"
+            >6. Pour quel type de produit électronique êtes-vous le plus
+            sensible aux promotions ?</label
+          >
+          <div class="flex flex-col space-y-2">
+            <label
+              ><input
+                type="radio"
+                name="q6"
+                value="smartphone_haut_de_gamme"
+                class="mr-2"
+                required
+              />Smartphone haut de gamme</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q6"
+                value="accessoires"
+                class="mr-2"
+                required
+              />Accessoires (écouteurs, coques, etc.)</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q6"
+                value="tablettes"
+                class="mr-2"
+                required
+              />Tablettes</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q6"
+                value="ordinateurs_portables"
+                class="mr-2"
+                required
+              />Ordinateurs portables</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q6"
+                value="objets_connectes"
+                class="mr-2"
+                required
+              />Objets connectés (montres, trackers, etc.)</label
+            >
+          </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div>
+          <label class="block font-medium mb-2"
+            >7. Quelle information vous semble la plus importante lorsque vous
+            évaluez une offre promotionnelle ?</label
+          >
+          <div class="flex flex-col space-y-2">
+            <label
+              ><input
+                type="radio"
+                name="q7"
+                value="prix_final"
+                class="mr-2"
+                required
+              />Le prix final après réduction</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q7"
+                value="pourcentage_reduction"
+                class="mr-2"
+                required
+              />Le pourcentage de réduction</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q7"
+                value="difference_prix"
+                class="mr-2"
+                required
+              />La différence entre le prix initial et le prix
+              promotionnel</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q7"
+                value="duree_promotion"
+                class="mr-2"
+                required
+              />La durée de la promotion</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q7"
+                value="conditions_application"
+                class="mr-2"
+                required
+              />Les conditions d'application de la promotion</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q7"
+                value="avantages_supplementaires"
+                class="mr-2"
+                required
+              />Les avantages supplémentaires (garantie prolongée, service
+              après-vente, etc.)</label
+            >
+          </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div>
+          <label class="block font-medium mb-2"
+            >8. Quel facteur vous dissuade le plus de profiter d'une promotion
+            ?</label
+          >
+          <div class="flex flex-col space-y-2">
+            <label
+              ><input
+                type="radio"
+                name="q8"
+                value="doute_qualite"
+                class="mr-2"
+                required
+              />Doute sur la qualité réelle du produit</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q8"
+                value="suspicion_augmentation"
+                class="mr-2"
+                required
+              />Suspicion d'une augmentation artificielle du prix avant la
+              promotion</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q8"
+                value="contraintes_promotion"
+                class="mr-2"
+                required
+              />Contraintes liées à la promotion (achat minimum, délai court,
+              etc.)</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q8"
+                value="experiences_negatives"
+                class="mr-2"
+                required
+              />Expériences négatives passées avec la marque</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="q8"
+                value="avis_negatifs"
+                class="mr-2"
+                required
+              />Avis négatifs d'autres consommateurs</label
+            >
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+          <button
+            type="submit"
+            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            Envoyer
+          </button>
+        </div>
       </form>
-    </main>
-
-    <script src="./javascript/vente.js"></script>
+    </div>
+    <script src="javascript/sondage.js"></script>
   </body>
 </html>
